@@ -49,8 +49,8 @@ def backframe(_driver):
     return _driver
 
 def alertaccept(_driver):
-    time.sleep(3)
     _driver.implicitly_wait(10)
+    time.sleep(5)
     alert = _driver.switch_to.alert
     alert.accept()
 
@@ -103,16 +103,17 @@ if newordercount:# 신규주문 확인
     if newordercount > 99:
         xpath_click(driver, nem.LISTCOUNTSELECT) # 셀렉트 선택
         xpath_click(driver, nem.LISTCOUNT500) # 주문갯수 선택
-        time.sleep(5) # 정보불러올떄까지 기다리기
+        time.sleep(10) # 정보불러올떄까지 기다리기
     xpath_click(driver, nem.ALLCHECK) # 상품 전체선택
     xpath_click(driver, nem.SENDCHECK) # 상품 최종단계선택
     alertaccept(driver) #알람 확인
+    time.sleep(10)
     alertaccept(driver) #알람 확인
     xpath_click(driver, nem.ORDERCHECKPAGE) # 주문 페이지로 이동
     if newordercount > 99:
         xpath_click(driver, nem.LISTCOUNTSELECT) # 셀렉트 선택
         xpath_click(driver, nem.LISTCOUNT500) # 주문갯수 선택
-        time.sleep(5) # 정보불러올떄까지 기다리기
+        time.sleep(10) # 정보불러올떄까지 기다리기
     xpath_click(driver, nem.EXCELDOWNLOAD) # 엑셀 버튼클릭
     try:
         xpath_send_keys(driver, nem.DOWNLOADINPUT1, nem.EXCELPASSWORD)

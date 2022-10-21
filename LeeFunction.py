@@ -94,8 +94,8 @@ def typeChack(tList:pd.DataFrame):
     _result.loc[(~pl&~bl) ,'dType'] = "s"
     return _result
 
-def userCheck(orderData:pd.DataFrame):
-    orderUser = pd.read_excel("./data/블랙리스트(슈케이브).xlsx", header=2)
+def userCheck(orderData:pd.DataFrame, userPath):
+    orderUser = pd.read_excel(userPath, header=2)
     orderPhone = orderData["수취인연락처1"].values
     userPhone = orderUser["연락처"].values
     result = any(np.in1d(orderPhone,userPhone))
